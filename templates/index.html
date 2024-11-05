@@ -48,15 +48,15 @@
 
     <h1>Check Water Potability</h1>
     <form id="waterForm">
-        <input type="number" id="ph" placeholder="pH" required>
-        <input type="number" id="hardness" placeholder="Hardness" required>
-        <input type="number" id="solids" placeholder="Solids" required>
-        <input type="number" id="chloramines" placeholder="Chloramines" required>
-        <input type="number" id="sulfate" placeholder="Sulfate" required>
-        <input type="number" id="conductivity" placeholder="Conductivity" required>
-        <input type="number" id="organic_carbon" placeholder="Organic Carbon" required>
-        <input type="number" id="trihalomethanes" placeholder="Trihalomethanes" required>
-        <input type="number" id="turbidity" placeholder="Turbidity" required>
+        <input type="number" id="ph" placeholder="pH" step="any" required>
+        <input type="number" id="hardness" placeholder="Hardness" step="any" required>
+        <input type="number" id="solids" placeholder="Solids" step="any" required>
+        <input type="number" id="chloramines" placeholder="Chloramines" step="any" required>
+        <input type="number" id="sulfate" placeholder="Sulfate" step="any" required>
+        <input type="number" id="conductivity" placeholder="Conductivity" step="any" required>
+        <input type="number" id="organic_carbon" placeholder="Organic Carbon" step="any" required>
+        <input type="number" id="trihalomethanes" placeholder="Trihalomethanes" step="any" required>
+        <input type="number" id="turbidity" placeholder="Turbidity" step="any" required>
         <button type="submit">Check Potability</button>
     </form>
 
@@ -70,20 +70,20 @@
             event.preventDefault();
 
             const data = {
-                ph: document.getElementById('ph').value,
-                hardness: document.getElementById('hardness').value,
-                solids: document.getElementById('solids').value,
-                chloramines: document.getElementById('chloramines').value,
-                sulfate: document.getElementById('sulfate').value,
-                conductivity: document.getElementById('conductivity').value,
-                organic_carbon: document.getElementById('organic_carbon').value,
-                trihalomethanes: document.getElementById('trihalomethanes').value,
-                turbidity: document.getElementById('turbidity').value,
+                ph: parseFloat(document.getElementById('ph').value),
+                hardness: parseFloat(document.getElementById('hardness').value),
+                solids: parseFloat(document.getElementById('solids').value),
+                chloramines: parseFloat(document.getElementById('chloramines').value),
+                sulfate: parseFloat(document.getElementById('sulfate').value),
+                conductivity: parseFloat(document.getElementById('conductivity').value),
+                organic_carbon: parseFloat(document.getElementById('organic_carbon').value),
+                trihalomethanes: parseFloat(document.getElementById('trihalomethanes').value),
+                turbidity: parseFloat(document.getElementById('turbidity').value),
             };
 
             try {
                 const response = await fetch('/check-potability', {
-                    method: 'POST',  // This is crucial to make sure it's a POST request
+                    method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
